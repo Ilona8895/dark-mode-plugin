@@ -6,7 +6,7 @@
     if (!toggle) return;
 
     const saved = localStorage.getItem(STORAGE_KEY);
-    const isDark = saved !== null ? saved === "1" : defaultOn;
+    const isDark = saved === "1";
 
     if (isDark) {
       document.body.classList.add("dark-mode-active");
