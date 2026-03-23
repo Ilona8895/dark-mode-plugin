@@ -61,7 +61,7 @@ class DarkModePlugin{
         wp_localize_script('dark-mode-frontend', 'darkModeColors', array(
             'colors' => $colors,
             'position' => get_option('dark_mode_position', 'bottom-right'),
-            'defaultOn' => get_option('dark_mode_default', '1') === '1'
+            'defaultOn' => get_option('dark_mode_default', '0') === '1'
         ));
     }
 
@@ -118,7 +118,7 @@ class DarkModePlugin{
         add_settings_section('dark_mode_first_section', null, null, 'dark-mode-settings-page');
 
         add_settings_field('dark_mode_default', 'Default Dark Mode', array($this, 'defaultHTML'), 'dark-mode-settings-page', 'dark_mode_first_section');
-        register_setting('dark_mode_plugin', 'dark_mode_default', array('sanitize_callback' => array($this, 'sanitizeDefault'), 'default' => '1'));
+        register_setting('dark_mode_plugin', 'dark_mode_default', array('sanitize_callback' => array($this, 'sanitizeDefault'), 'default' => '0'));
 
         add_settings_field('dark_mode_position', 'Dark Mode Position Icon', array($this, 'positionHTML'), 'dark-mode-settings-page', 'dark_mode_first_section');
         register_setting('dark_mode_plugin', 'dark_mode_position', array('sanitize_callback' => 'sanitize_text_field', 'default' => 'bottom-right'));
